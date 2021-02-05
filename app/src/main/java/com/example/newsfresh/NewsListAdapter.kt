@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 class NewsListAdapter(private val items: ArrayList<String>, private val listener: NewsItemClicked): RecyclerView.Adapter<NewsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
+        val viewHolder = NewsViewHolder(view)
         view.setOnClickListener {
-            val viewHolder = NewsViewHolder(view)
+
          listener.onItemClicked(items[viewHolder.adapterPosition])
         }
-        return NewsViewHolder(view)
+        return viewHolder
     }
     override fun getItemCount(): Int {
         return items.size
