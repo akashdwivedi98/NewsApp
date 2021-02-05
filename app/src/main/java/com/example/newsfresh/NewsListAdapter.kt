@@ -1,17 +1,19 @@
 package com.example.newsfresh
 
 import android.view.LayoutInflater
+import android.view.OrientationEventListener
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 
-class NewsListAdapter(private val items: ArrayList<String>): RecyclerView.Adapter<NewsViewHolder>() {
+class NewsListAdapter(private val items: ArrayList<String>, private val listener: NewsItemClicked): RecyclerView.Adapter<NewsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
         view.setOnClickListener {
-
+            val viewHolder = NewsViewHolder(view)
+         listener.onItemClicked(items[viewHolder.adapterPosition])
         }
         return NewsViewHolder(view)
     }
@@ -25,4 +27,8 @@ class NewsListAdapter(private val items: ArrayList<String>): RecyclerView.Adapte
 }
 class NewsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     val titleView: TextView = itemView.findViewById(R.id.title)
+}
+
+interface NewsItemClicked {
+    fun onItemClicked(item: String)
 }
