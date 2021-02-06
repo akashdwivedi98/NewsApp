@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.toolbox.JsonObjectRequest
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity(), NewsItemClicked {
@@ -17,12 +19,13 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
         val adapter = NewsListAdapter(items, this)
         recyclerView.adapter = adapter
     }
-        private fun fetchData(): ArrayList<String> {
-            val list = ArrayList<String>()
-            for(i in 0 until 100) {
-                list.add("Item $i")
-            }
-            return list
+        private fun fetchData()
+        val url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=de886701f66a4c23bc635a91e3e014c9"
+        val jsonObjectRequest = JsonObjectRequest(
+
+        )
+
+
     }
 
     override fun onItemClicked(item: String) {
