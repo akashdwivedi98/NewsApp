@@ -32,13 +32,14 @@ import org.json.JSONObject
                         val newsJsonArray = it.getJSONArray("articles ")
                         val.newsArray = ArrayList<News>()
                           for (i in 0 until newsJsonArray.length()) {
+                              val newJsonObject = newsJsonArray.getJSONObject(i)
                     },
                     Response.ErrorListener {
 
                     }
             )
         }
-         MySingleton.getInstance
+         MySingleton.getInstance(this).addToRequestQueue
     }
 
     override fun onItemClicked(item: String) {
