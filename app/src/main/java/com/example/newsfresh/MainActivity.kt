@@ -39,7 +39,7 @@ import org.json.JSONObject
                     }
             )
         }
-         MySingleton.getInstance(this).addToRequestQueue
+         MySingleton.getInstance(this).
     }
 
     override fun onItemClicked(item: String) {
